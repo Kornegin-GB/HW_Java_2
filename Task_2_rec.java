@@ -3,7 +3,7 @@
  */
 package HW_Java_2;
 
-public class Task_2 {
+public class Task_2_rec {
    public static void main(String[] args) {
       int n = 1;
       System.out.println(climbStairs(n));
@@ -19,9 +19,15 @@ public class Task_2 {
       int[] arr = new int[n + 1];
       arr[0] = 1;
       arr[1] = 1;
-      for (int i = 2; i <= n; i++) {
-         arr[i] = arr[i - 1] + arr[i - 2];
+      steps(n, arr);
+      return arr[n];
+   }
+
+   public static int steps(int n, int[] arr) {
+      if (arr[n] != 0) {
+         return arr[n];
       }
+      arr[n] = steps(n - 1, arr) + steps(n - 2, arr);
       return arr[n];
    }
 }
